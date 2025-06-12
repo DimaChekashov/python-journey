@@ -1,2 +1,5 @@
 # wagtail-nextjs
-Wagtail CMS + Next JS SSR
+
+Frontend: React/NextJS
+Backend: Django/Wagtail CMS
+
