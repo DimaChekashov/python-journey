@@ -1,0 +1,209 @@
+{
+  "posts": [
+    {
+      "id": "first",
+      "seo": {
+        "title": "Как начать работать с Next.js",
+        "meta_description": "Полное руководство по началу работы с Next.js для новичков",
+        "og_image": "/media/uploads/nextjs-guide.jpg",
+        "canonical_url": "/blog/nextjs-guide"
+      },
+      "data": {
+        "id": 1,
+        "title": "Введение в Next.js",
+        "slug": "nextjs-guide",
+        "content": "<p>Next.js - это фреймворк для React...</p>",
+        "published_at": "2024-01-15",
+        "author": "Алексей Петров",
+        "views": 1245
+      },
+      "template": "blue",
+      "status": "opened"
+    },
+    {
+      "id": "second",
+      "seo": {
+        "title": "Wagtail CMS: секреты настройки",
+        "meta_description": "Как правильно настроить Wagtail для вашего проекта",
+        "og_image": "/media/uploads/wagtail-secrets.jpg",
+        "canonical_url": "/blog/wagtail-secrets"
+      },
+      "data": {
+        "id": 2,
+        "title": "Wagtail для разработчиков",
+        "slug": "wagtail-secrets",
+        "content": "<p>Wagtail предлагает мощный API...</p>",
+        "published_at": "2024-02-03",
+        "author": "Мария Иванова",
+        "views": 876
+      },
+      "template": "green",
+      "status": "closed"
+    },
+    {
+      "id": "third",
+      "seo": {
+        "title": "Оптимизация производительности в React",
+        "meta_description": "10 способов ускорить ваше React-приложение",
+        "og_image": "/media/uploads/react-optimization.jpg",
+        "canonical_url": "/blog/react-optimization"
+      },
+      "data": {
+        "id": 3,
+        "title": "Оптимизация React",
+        "slug": "react-optimization",
+        "content": "<p>Использование useMemo и useCallback...</p>",
+        "published_at": "2024-02-18",
+        "author": "Дмитрий Смирнов",
+        "views": 1532
+      },
+      "template": "red",
+      "status": "opened"
+    },
+    {
+      "id": "fourth",
+      "seo": {
+        "title": "TypeScript для начинающих",
+        "meta_description": "Основы TypeScript за 30 минут",
+        "og_image": "/media/uploads/typescript-basics.jpg",
+        "canonical_url": "/blog/typescript-basics"
+      },
+      "data": {
+        "id": 4,
+        "title": "Изучаем TypeScript",
+        "slug": "typescript-basics",
+        "content": "<p>TypeScript добавляет статическую типизацию...</p>",
+        "published_at": "2024-03-05",
+        "author": "Елена Кузнецова",
+        "views": 987
+      },
+      "template": "blue",
+      "status": "archived"
+    },
+    {
+      "id": "fivth",
+      "seo": {
+        "title": "GraphQL vs REST",
+        "meta_description": "Сравнение двух подходов к API",
+        "og_image": "/media/uploads/graphql-vs-rest.jpg",
+        "canonical_url": "/blog/graphql-vs-rest"
+      },
+      "data": {
+        "id": 5,
+        "title": "Выбираем между GraphQL и REST",
+        "slug": "graphql-vs-rest",
+        "content": "<p>GraphQL предлагает гибкость запросов...</p>",
+        "published_at": "2024-03-12",
+        "author": "Иван Сидоров",
+        "views": 654
+      },
+      "template": "green",
+      "status": "opened"
+    },
+    {
+      "id": "sexth",
+      "seo": {
+        "title": "Docker для фронтенд-разработчиков",
+        "meta_description": "Как использовать Docker в ваших проектах",
+        "og_image": "/media/uploads/docker-frontend.jpg",
+        "canonical_url": "/blog/docker-frontend"
+      },
+      "data": {
+        "id": 6,
+        "title": "Docker и фронтенд",
+        "slug": "docker-frontend",
+        "content": "<p>Контейнеризация приложений...</p>",
+        "published_at": "2024-03-20",
+        "author": "Анна Воробьева",
+        "views": 432
+      },
+      "template": "red",
+      "status": "closed"
+    },
+    {
+      "id": "seven",
+      "seo": {
+        "title": "JAMSTACK архитектура",
+        "meta_description": "Почему JAMSTACK - это будущее веба",
+        "og_image": "/media/uploads/jamstack-future.jpg",
+        "canonical_url": "/blog/jamstack-future"
+      },
+      "data": {
+        "id": 7,
+        "title": "Будущее JAMSTACK",
+        "slug": "jamstack-future",
+        "content": "<p>Статическая генерация сайтов...</p>",
+        "published_at": "2024-04-01",
+        "author": "Павел Новиков",
+        "views": 765
+      },
+      "template": "blue",
+      "status": "opened"
+    },
+    {
+      "id": "eighth",
+      "seo": {
+        "title": "Оптимизация изображений",
+        "meta_description": "Как уменьшить вес изображений без потери качества",
+        "og_image": "/media/uploads/image-optimization.jpg",
+        "canonical_url": "/blog/image-optimization"
+      },
+      "data": {
+        "id": 8,
+        "title": "Современные методы оптимизации",
+        "slug": "image-optimization",
+        "content": "<p>Использование WebP и AVIF...</p>",
+        "published_at": "2024-04-08",
+        "author": "Светлана Морозова",
+        "views": 543
+      },
+      "template": "green",
+      "status": "archived"
+    },
+    {
+      "id": "nine",
+      "seo": {
+        "title": "CSS Grid Layout",
+        "meta_description": "Полное руководство по CSS Grid",
+        "og_image": "/media/uploads/css-grid.jpg",
+        "canonical_url": "/blog/css-grid"
+      },
+      "data": {
+        "id": 9,
+        "title": "Осваиваем CSS Grid",
+        "slug": "css-grid",
+        "content": "<p>Создание сложных макетов...</p>",
+        "published_at": "2024-04-15",
+        "author": "Артем Лебедев",
+        "views": 876
+      },
+      "template": "red",
+      "status": "opened"
+    },
+    {
+      "id": "ten",
+      "seo": {
+        "title": "Web Components в 2024",
+        "meta_description": "Стоит ли использовать Web Components",
+        "og_image": "/media/uploads/web-components.jpg",
+        "canonical_url": "/blog/web-components"
+      },
+      "data": {
+        "id": 10,
+        "title": "Web Components сегодня",
+        "slug": "web-components",
+        "content": "<p>Нативные компоненты браузера...</p>",
+        "published_at": "2024-04-22",
+        "author": "Ольга Семенова",
+        "views": 321
+      },
+      "template": "blue",
+      "status": "closed"
+    }
+  ],
+  "meta": {
+    "total_posts": 10,
+    "current_page": 1,
+    "per_page": 10
+  }
+}
