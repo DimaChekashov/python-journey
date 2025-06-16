@@ -2,12 +2,13 @@ import { GetServerSidePropsContext } from "next";
 import { PostPage } from "@/pages/post";
 import posts from "@/shared/const/posts.json";
 import { Post as PostType } from "@/shared/types/Post";
+import PostProvider from "@/app/providers/Post/PostProvider";
 
 export async function getServerSideProps(
   context: GetServerSidePropsContext<{ id: string }>
 ) {
   const { id } = context.params!;
-  
+
   const post = posts.posts.find((post) => post.id === id);
 
   if (!post) {
@@ -18,5 +19,9 @@ export async function getServerSideProps(
 }
 
 export default function Post({ post }: { post: PostType }) {
-  return <PostPage post={post} />;
+  return (
+    <PostProvider>
+      <PostPage post={post} />
+    </PostProvider>
+  );
 }

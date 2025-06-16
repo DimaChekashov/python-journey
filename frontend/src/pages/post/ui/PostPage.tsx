@@ -1,8 +1,16 @@
+import { useContext, useLayoutEffect } from "react";
 import { Post as PostType } from "@/shared/types/Post";
 import Head from "next/head";
+import PostContext from "@/app/providers/Post/PostContext";
 
 export default function Post({ post }: { post: PostType }) {
-  const { seo, data, template, status } = post;
+  const { setStatus, status } = useContext(PostContext);
+  const { seo, data, template } = post;
+
+  useLayoutEffect(() => {
+    setStatus(post.status);
+  }, []);
+
   return (
     <>
       <Head>
@@ -31,6 +39,7 @@ export default function Post({ post }: { post: PostType }) {
             <div>Автор: {data.author}</div>
             <div>Дата создания: {data.published_at}</div>
             <div>Просмотры: {data.views}</div>
+            <div>Статус Поста: {status}</div>
           </div>
         </div>
       </div>
