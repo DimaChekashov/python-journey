@@ -3,10 +3,14 @@ import { PostPage } from "@/pages/post";
 import posts from "@/shared/const/posts.json";
 import { Post as PostType } from "@/shared/types/Post";
 import PostProvider from "@/app/providers/Post/PostProvider";
+import { checkSSRRateLimit } from "@/shared/lib/rateLimiter";
 
 export async function getServerSideProps(
   context: GetServerSidePropsContext<{ id: string }>
 ) {
+  const rateLimitResult = await checkSSRRateLimit(context.req);
+  if (rateLimitResult.redirect) return rateLimitResult;
+
   const { id } = context.params!;
 
   const post = posts.posts.find((post) => post.id === id);
