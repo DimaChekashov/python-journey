@@ -9,7 +9,6 @@ export default function Post({ post }: { post: PostType }) {
         <title>{seo.title}</title>
         <meta name="description" content={seo.meta_description} />
 
-        {/* OpenGraph (Facebook, LinkedIn) */}
         <meta property="og:title" content={seo.title} />
         <meta property="og:description" content={seo.meta_description} />
         <meta property="og:image" content={seo.og_image} />
@@ -25,7 +24,15 @@ export default function Post({ post }: { post: PostType }) {
         <meta name="robots" content="index, follow" />
       </Head>
       <div>
-        <h1>{data.title}</h1>
+        <div className="container mx-auto px-4 pt-10">
+          <h1 className="mb-6 text-3xl">{data.title}</h1>
+          <article dangerouslySetInnerHTML={{ __html: data.content }} />
+          <div className="flex gap-4 mt-6">
+            <div>Автор: {data.author}</div>
+            <div>Дата создания: {data.published_at}</div>
+            <div>Просмотры: {data.views}</div>
+          </div>
+        </div>
       </div>
     </>
   );
