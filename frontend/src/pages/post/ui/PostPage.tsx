@@ -2,7 +2,7 @@ import { Post as PostType } from "@/shared/types/Post";
 import Head from "next/head";
 
 export default function Post({ post }: { post: PostType }) {
-  const { seo, data } = post;
+  const { seo, data, template, status } = post;
   return (
     <>
       <Head>
@@ -23,7 +23,7 @@ export default function Post({ post }: { post: PostType }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index, follow" />
       </Head>
-      <div>
+      <div className={`min-h-[100vh] template-${template}`}>
         <div className="container mx-auto px-4 pt-10">
           <h1 className="mb-6 text-3xl">{data.title}</h1>
           <article dangerouslySetInnerHTML={{ __html: data.content }} />
