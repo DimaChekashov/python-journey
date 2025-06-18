@@ -7,7 +7,12 @@ from wagtail.admin.panels import FieldPanel
 
 
 class BlogIndexPage(Page):
-    intro = RichTextField(blank=True)
+    intro = RichTextField(
+            blank=False,
+            null=False,
+            verbose_name="Описание",
+            help_text="Заполните: описание вакансии, требования и обязанности"
+        )
 
     content_panels = Page.content_panels + [
         FieldPanel('intro')
