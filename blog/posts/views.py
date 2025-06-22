@@ -1,23 +1,12 @@
-from django.shortcuts import redirect, render
-from django.http import HttpResponse
-from .forms import PostForm
+from rest_framework import generics
 from .models import Post
+from .serializers import PostSerializer
 
-def home(request):
-    return HttpResponse("Привет, это мой блог!")
-
-def create_post(request):
-    if request.method == 'POST':
-        form = PostForm(request.POST)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user
-            post.save()
-            return redirect('post_list')
-    else:
-        form = PostForm()
-    return render(request, 'posts/create_post.html', {'form': form})
-
-def post_list(request):
-    posts = Post.objects.all()
-    return render(request, 'posts/post_list.html', {'posts': posts})
+class PostListAPIView(generics.ListAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    
+class PostDetailAPIView(generics.RetrieveAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    lookup_field = 'slug'
