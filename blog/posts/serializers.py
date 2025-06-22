@@ -1,27 +1,33 @@
 from rest_framework import serializers
-from .models import Post, SEO
-
-class SEOSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = SEO
-        fields = '__all__'
+from .models import Post
+from django.conf import settings
 
 class PostSerializer(serializers.ModelSerializer):
-    seo = SEOSerializer()
-
     class Meta:
         model = Post
         fields = '__all__'
+        extra_kwargs = {
+            'slug': {'read_only': True},
+            'views': {'read_only': True}
+        }
 
     def to_representation(self, instance):
+        # Получаем базовое представление
         data = super().to_representation(instance)
+        
+        # Формируем полный URL для изображения
+        og_image_url = None
+        if instance.og_image:
+            request = self.context.get('request')
+            og_image_url = request.build_absolute_uri(instance.og_image.url) if request else f"{settings.BASE_URL}{instance.og_image.url}"
+
         return {
             "id": instance.slug,
             "seo": {
-                "title": data['seo']['title'],
-                "meta_description": data['seo']['meta_description'],
-                "og_image": data['seo']['og_image'],
-                "canonicial_url": data['seo']['canonicial_url']
+                "title": data['seo_title'],
+                "meta_description": data['meta_description'],
+                "og_image": og_image_url,
+                "canonical_url": data['canonical_url']
             },
             "data": {
                 "id": data['id'],

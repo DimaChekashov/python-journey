@@ -2,32 +2,32 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import date
 
-class SEO(models.Model):
-    title = models.CharField(max_length=255)
-    meta_description = models.TextField()
-    og_image = models.ImageField(upload_to='uploads/')
-    canonical_url= models.CharField(max_length=255)
-
 class Post(models.Model):
     TEMPLATE_CHOICES = [
-        {'blue', 'Синий'},
-        {'green', 'Зеленый'},
-        {'red', 'Красный'}
+        ('blue', 'Синий'),
+        ('green', 'Зеленый'),
+        ('red', 'Красный')
     ]
     STATUS_CHOICES = [
-        {'opened', 'Открыто'},
-        {'closed', 'Закрыто'},
-        {'archived', 'В архиве'}
+        ('opened', 'Открыто'),
+        ('closed', 'Закрыто'),
+        ('archived', 'В архиве')
     ]
+    
+    seo_title = models.CharField('SEO Title', max_length=255, blank=True)
+    meta_description = models.TextField('Meta Description', blank=True)
+    og_image = models.ImageField('OpenGraph Image', upload_to='uploads/', blank=True)
+    canonical_url = models.CharField('Canonical URL', max_length=255, blank=True)
 
-    seo = models.OneToOneField(SEO, on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
-    slug = models.SlugField(unique=True)
-    content = models.TextField()
-    published_at = models.DateField(default=date.today)
-    author = models.CharField(max_length=100)
-    views = models.IntegerField(default=0)
-    template = models.CharField(max_length=50, choices=TEMPLATE_CHOICES)
-    status = models.CharField(max_length=50, choices=STATUS_CHOICES)
+    title = models.CharField('Заголовок', max_length=200)
+    slug = models.SlugField('URL-адрес', unique=True)
+    content = models.TextField('Содержание')
+    published_at = models.DateField('Дата публикации', default=date.today)
+    author = models.CharField('Автор', max_length=100)
+    views = models.IntegerField('Просмотры', default=0)
+    template = models.CharField('Шаблон', max_length=50, choices=TEMPLATE_CHOICES)
+    status = models.CharField('Статус', max_length=50, choices=STATUS_CHOICES)
 
+    def __str__(self):
+        return self.title
     # author = models.ForeignKey(User, on_delete=models.CASCADE)
