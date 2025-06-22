@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { RateLimiterMemory } from "rate-limiter-flexible";
 
 const rateLimiter = new RateLimiterMemory({
-  points: 10, // 10 запросов
+  points: 50, // 10 запросов
   duration: 1, // за 1 секунду
 });
 
