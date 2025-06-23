@@ -1,8 +1,20 @@
 {% extends 'main/layout.html' %}
 
-{% block title %}Main Page{% endblock %}
+{% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-    <h1>Main Page</h1>
+    <h1>{{ title }}</h1>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore repudiandae at ipsa deleniti porro ullam veniam vel culpa numquam voluptas! Expedita corporis optio aut, nostrum rerum provident obcaecati ratione numquam.</p>
+
+    {% for el in values %}
+        {% if el == 'Hello' %}
+            {% filter upper %}
+                <p>{{ el }}</p>
+            {% endfilter %}
+        {% endif %}
+    {% endfor %}
+
+    {% for el in obj %}
+        <p>{{ el|upper }}</p>
+    {% endfor %}
 {% endblock %}
