@@ -4,5 +4,16 @@
 
 {% block content %}
     <h1>News on site</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore repudiandae at ipsa deleniti porro ullam veniam vel culpa numquam voluptas! Expedita corporis optio aut, nostrum rerum provident obcaecati ratione numquam.</p>
+    {% if news %}
+        {% for el in news %}
+            <div class="alert alert-warning">
+                <h3>{{ el.title }}</h3>
+                <p>{{ el.anons }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>News is empty!</p>
+    {% endif %}
+
+    {# Comment #}
 {% endblock %}
