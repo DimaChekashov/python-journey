@@ -5,5 +5,6 @@ urlpatterns = [
     path('', views.index, name="home"),
     re_path(r'^some-url', views.some_url, name="some_url"),
     path('calc', views.calc, name="calc"),
-    path('about', views.about, name="about", kwargs={"name":"Tom", "age": 38})
+    path('about', views.about, name="about", kwargs={"name":"Tom", "age": 38}),
+    path('index-request', views.index_request, name="index_request")
 ]
