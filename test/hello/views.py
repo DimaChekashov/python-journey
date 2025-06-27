@@ -8,9 +8,12 @@ def some_url(request):
     return HttpResponse("Some url")
 
 def calc(request):
-    a = 10
-    b = 20
-    return HttpResponse(f"{a} + {b} = {a + b}")
+    a = int(request.GET.get('a', 10))
+    b = int(request.GET.get('b', 20))
+    
+    result = a + b
+    
+    return HttpResponse(f"{a} + {b} = {result}")
 
 def about(request, name, age):
     return HttpResponse(f"""
