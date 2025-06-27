@@ -2,7 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def index(request):
-    return HttpResponse("Hello")
+    return HttpResponse("<h1>Hello</h1>", content_type="text/plain", charset="utf-8")
+    return HttpResponse("Error", status=400, reason="Incorrect data")
+    return HttpResponse("Hello World", headers={"SecretCode": "21234567"})
 
 def some_url(request):
     return HttpResponse("Some url")
