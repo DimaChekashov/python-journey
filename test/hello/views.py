@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponsePermanentRedirect, HttpResponseBadRequest, HttpResponseForbidden, JsonResponse
 from django.core.serializers.json import DjangoJSONEncoder
-
+from django.template.response import TemplateResponse
+  
 def index(request):
-    return HttpResponse("<h1>Hello</h1>", content_type="text/plain", charset="utf-8")
-    return HttpResponse("Error", status=400, reason="Incorrect data")
-    return HttpResponse("Hello World", headers={"SecretCode": "21234567"})
+    # return TemplateResponse(request,  "index.html")
+    return render(request, "index.html")
 
 def some_url(request):
     return HttpResponse("Some url")
