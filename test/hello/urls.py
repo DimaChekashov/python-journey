@@ -22,4 +22,6 @@ urlpatterns = [
     path("details/", views.details),
     path("access/<int:age>", views.access),
     path('user-json', views.user_json, name="huser-json"),
+    path("set", views.set),
+    path("get", views.get),
 ]

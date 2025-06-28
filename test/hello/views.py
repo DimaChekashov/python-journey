@@ -82,3 +82,14 @@ class PersonEncoder(DjangoJSONEncoder):
         if isinstance(obj, Person):
             return {"name": obj.name, "age": obj.age}
         return super().default(obj)
+    
+
+def set(request):
+    username = request.GET.get("username", "Undefined")
+    response = HttpResponse(f"Set: Hello {username}")
+    response.set_cookie("username", username)
+    return response
+
+def get(request):
+    username = request.COOKIES["username"]
+    return HttpResponse(f"Get: Hello {username}")
