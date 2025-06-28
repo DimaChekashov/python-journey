@@ -16,5 +16,6 @@ urlpatterns = [
     path('user/', views.user),
     path('user/<name>', views.user),
     path('user/<name>/<int:age>', views.user),
-    path("products/<int:id>/", include(product_patterns))
+    path("products/<int:id>/", include(product_patterns)),
+    path("block", views.block)
 ]

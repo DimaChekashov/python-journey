@@ -47,3 +47,8 @@ def new(request, id):
  
 def top(request, id):
     return HttpResponse(f"Question: {id}")
+
+def block(request):
+    width = request.GET.get("width", 0)
+    height = request.GET.get("height", 0)
+    return HttpResponse(f"<h2>Width: {width} Height: {height}</h2>")
