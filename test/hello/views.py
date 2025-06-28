@@ -34,3 +34,16 @@ def index_request(request):
         <p>Path: {path}</p>
         <p>User-agent: {user_agent}</p>
     """)
+    
+
+def user(request, name="Undefined", age=0):
+    return HttpResponse(f"User: {name} <br> Age: {age}")
+
+def products(request, id):
+    return HttpResponse(f"Product: {id}")
+ 
+def new(request, id):
+    return HttpResponse(f"Comment: {id}")
+ 
+def top(request, id):
+    return HttpResponse(f"Question: {id}")
