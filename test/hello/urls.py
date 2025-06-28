@@ -21,4 +21,5 @@ urlpatterns = [
     path("contact/", views.contact),
     path("details/", views.details),
     path("access/<int:age>", views.access),
+    path('user-json', views.user_json, name="huser-json"),
 ]

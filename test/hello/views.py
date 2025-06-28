@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect, HttpResponsePermanentRedirect, HttpResponseBadRequest, HttpResponseForbidden
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponsePermanentRedirect, HttpResponseBadRequest, HttpResponseForbidden, JsonResponse
+from django.core.serializers.json import DjangoJSONEncoder
 
 def index(request):
     return HttpResponse("<h1>Hello</h1>", content_type="text/plain", charset="utf-8")
@@ -66,3 +67,18 @@ def access(request, age):
         return HttpResponse("Access accept!")
     else:
         return HttpResponseForbidden("Access denied: age restriction")
+    
+def user_json(request):
+    dima = Person("Dima", 26)
+    return JsonResponse(dima, safe=False, encoder=PersonEncoder)
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+class PersonEncoder(DjangoJSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, Person):
+            return {"name": obj.name, "age": obj.age}
+        return super().default(obj)
