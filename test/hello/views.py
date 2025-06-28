@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponsePermanentRedirect, HttpResponseBadRequest, HttpResponseForbidden
 
 def index(request):
     return HttpResponse("<h1>Hello</h1>", content_type="text/plain", charset="utf-8")
@@ -52,3 +52,17 @@ def block(request):
     width = request.GET.get("width", 0)
     height = request.GET.get("height", 0)
     return HttpResponse(f"<h2>Width: {width} Height: {height}</h2>")
+
+def contact(request):
+    return HttpResponseRedirect("/about")
+ 
+def details(request):
+    return HttpResponsePermanentRedirect("/")
+
+def access(request, age):
+    if age not in range(1, 111):
+        return HttpResponseBadRequest("Incorrect data")
+    if (age > 17):
+        return HttpResponse("Access accept!")
+    else:
+        return HttpResponseForbidden("Access denied: age restriction")
