@@ -2,10 +2,18 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponsePermanentRedirect, HttpResponseBadRequest, HttpResponseForbidden, JsonResponse
 from django.core.serializers.json import DjangoJSONEncoder
 from django.template.response import TemplateResponse
-  
+from datetime import datetime 
+
 def index(request):
-    # return TemplateResponse(request,  "index.html")
-    return render(request, "index.html")
+    header = "Данные пользователя"
+    langs = ["Python", "Java", "C#"]
+    user ={"name" : "Tom", "age" : 23}
+    address = ("Абрикосовая", 23, 45)
+    body = "<h3>Hello World!</h3>"
+    users = ["Tom", "Sam", "Bob", "Mike"]
+    data = {"header": header, "langs": langs, "user": user, "users": users, "address": address, "body": body, "n": 5, "my_date": datetime.now()}
+    # return TemplateResponse(request,  "index.html", data)
+    return render(request, "index.html", context=data)
 
 def some_url(request):
     return HttpResponse("Some url")
