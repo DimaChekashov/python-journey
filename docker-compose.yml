@@ -1,51 +1,33 @@
 services:
-  zookeeper:
-    image: bitnami/zookeeper:3.9
-    environment:
-      ZOOKEEPER_CLIENT_PORT: 2181
-      ZOOKEEPER_TICK_TIME: 2000
-    ports:
-      - "2181:2181"
-
-  kafka:
-    image: bitnami/kafka:3.6
+  # Users Service
+  users:
+    build: ./backend/users
+    ports: ["8000:8000"]
     depends_on:
-      - zookeeper
-    ports:
-      - "9092:9092"
-      - "29092:29092"
+      - db-users
     environment:
-      KAFKA_BROKER_ID: 1
-      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_INTERNAL://kafka:29092
-      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT_INTERNAL
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
-      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      - DATABASE_URL=postgresql://admin:pass@db-users:5432/users_db
 
-  posts_service:
-    build: ./backend/posts_service
-    environment:
-      - KAFKA_BROKER_URL=kafka:9092
-      - POSTGRES_HOST=postgres-posts
-      - POSTGRES_USER=posts_user
-      - POSTGRES_PASSWORD=posts_pass
-      - POSTGRES_DB=posts_db
-    ports:
-      - "8002:8000"
+  # Posts Service
+  posts:
+    build: ./backend/posts
+    ports: ["8001:8000"]
     depends_on:
-      - postgres-posts
-      - kafka
-
-  postgres-posts:
-    image: postgres:16.9-bullseye
+      - db-posts
     environment:
-      POSTGRES_USER: posts_user
-      POSTGRES_PASSWORD: posts_pass
+      - DATABASE_URL=postgresql://admin:pass@db-posts:5432/posts_db
+
+  # Базы данных
+  db-users:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: users_db
+
+  db-posts:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: pass
       POSTGRES_DB: posts_db
-    volumes:
-      - postgres_posts_data:/var/lib/postgresql/data
-
-volumes:
-  postgres_posts_data:
