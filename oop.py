@@ -60,6 +60,19 @@ class GamingComputer(Computer):
     def get_info(self):
         return f"Name: {self.name}\nCPU: {self.cpu}\nRAM: {self.ram}\nGPU: {self.gpu}\nStatus: {self.check_status()}"
     
+class SecurityComputer(Computer):
+    def __init__(self, name, cpu, ram):
+        super().__init__(name, cpu, ram)
+        self.__data = "Secret data"
+        
+    @property
+    def data(self):
+        return self.__data
+    
+    @data.setter
+    def data(self, value):
+        self.__data = value
+    
 my_computer = Computer("My Computer", "Intel Core i5", 16)
 print(my_computer.__doc__)
 print(my_computer.turn_on())
@@ -75,3 +88,8 @@ print(my_computer + my_computer_2)
 my_gaming_computer = GamingComputer("My Gaming Computer", "Intel Core i7", 32, "Nvidia RTX 3060")
 my_gaming_computer.turn_on()
 print(my_gaming_computer.get_info())
+
+my_security_computer = SecurityComputer("My Security Computer", "Intel Core i7", 32)
+print(my_security_computer.data)
+my_security_computer.data = "New data"
+print(my_security_computer.data)
